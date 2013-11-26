@@ -26,11 +26,12 @@ if (Meteor.isClient) {
     };
 
 
+    // set session defualts
     Session.setDefault('itemType','type1');
     Session.setDefault('itemSorting','myItemId');
 
 
-    // just update the session every second
+    // just call the {{countUp}} helpers every second
     Meteor.setInterval(function(){
       Session.set('countUp', new Date().getSeconds());
     },1000);
@@ -39,12 +40,15 @@ if (Meteor.isClient) {
   });
 
 
+  // show the items
   Template.main.items = function () {
     var sort = {sort:{}};
     sort.sort[Session.get('itemSorting')] = 1;
     return MyColl.find({type: Session.get('itemType')},sort);
   };
 
+
+  // trigger buttons
   Template.main.events({
     'click button.switchItems' : function () {
       if(Session.equals('itemType','type1'))
@@ -61,6 +65,7 @@ if (Meteor.isClient) {
   });
 
 
+  // the helper to re-run
   Template.itemTemplate.countUp = function () {
     console.log('countedup');
     return Session.get('countUp');
