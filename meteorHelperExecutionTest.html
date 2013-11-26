@@ -1,0 +1,37 @@
+<head>
+  <title>meteorHelperExecutionTest</title>
+</head>
+
+<body>
+  {{> main}}
+</body>
+
+<template name="main">
+  <h1>Helper execution test</h1>
+  <p>
+    This test shows that the helpers, when a list gets re-rendered (by sorting) the helper gets called but wont re-render.<br>
+    <strong>Note</strong> when switching back the type, its will regain its reactivity again.
+    <br>
+    Steps to reproduce:<br>
+    <ol>
+        <li>Press the "switch sorting" button (reactivity gets lost)</li>
+        <li>Press the switch type and reactiveity is back (when pressed again even for the items which lost reactivity)</li>
+    </ol>
+
+  </p>
+  <br>
+  <button class="switchItems">Switch item type</button>
+  <button class="switchSorting">Switch item sorting (from itemId <-> random number)</button>
+  <br><br><br><br>
+
+  {{#each items}}
+    {{> itemTemplate}}
+  {{/each}}
+</template>
+
+
+<template name="itemTemplate">
+    <span style="{{countUp}}"></span>
+    The item {{myItemId}} will count up -> <strong>{{countUp}}</strong> and has the random number -> {{random}}<br>
+    <br>
+</template>
