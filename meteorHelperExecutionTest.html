@@ -8,18 +8,21 @@
 
 <template name="main">
   <h1>Helper execution test</h1>
-  <button class="switchItems">Switch item type</button>
-  <button class="switchSorting">Switch item sorting (from itemId &lt;-&gt; random number)</button>
+  <button class="rerunHelper">Rerun helper, check console</button>
   <br><br><br>
 
-  {{#each items}}
-    {{> itemTemplate}}
-  {{/each}}
+  {{> getTemplate "layerOne"}}
 </template>
 
 
-<template name="itemTemplate">
-    <span style="{{countUp}}"></span>
-    Item ID {{myItemId}} count seconds -> <strong>{{countUp}}</strong> and has random number -> {{random}}<br>
-    <br>
+<template name="layerOne">
+    Layer one
+    {{myHelper}}
+
+    {{> getTemplate "layerTwo"}}
+</template>
+
+<template name="layerTwo">
+    Layer two
+    {{myHelper}}
 </template>
