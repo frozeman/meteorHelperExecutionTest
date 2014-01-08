@@ -20,12 +20,21 @@
     Layer one
     {{myHelper}}
 
-    {{> getTemplate template="layerTwo" value="myText1"}}
-    <br>
-    {{> getTemplate template="layerTwo" value="myText2"}}
+    {{> getTemplate template="layerTwo"}}
 </template>
 
 <template name="layerTwo">
     Layer two
+    {{myHelper}}
+
+    {{> getTemplate template="layerThree" value="myText1"}}
+    <div>
+      Texts
+    </div>
+    {{> getTemplate template="layerThree" value="myText2"}}
+</template>
+
+<template name="layerThree">
+    Layer three
     {{myHelper}}
 </template>

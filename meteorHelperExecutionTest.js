@@ -13,14 +13,24 @@ if (Meteor.isClient) {
   });
 
 
+  Template.layerOne.rendered = function () {
+    console.log('layerOne data is:', this.data);
+  };
+  Template.layerTwo.rendered = function () {
+    console.log('layerTwo data is:', this.data);
+  };
+  Template.layerThree.rendered = function () {
+    console.log('layerThree data is:', this.data);
+  };
+
   // helper reactivity test
   Template.layerOne.myHelper = function () {
     Session.get('rerun');
-    console.log('layerOne name is:'+ this.myName, 'additionalValue: '+this.additionalValue);
+    // console.log('layerOne name is:'+ this.myName, 'additionalValue: '+this.additionalValue);
   };
   Template.layerTwo.myHelper = function () {
     Session.get('rerun');
-    console.log('layerTwo name is:'+ this.myName, 'additionalValue: '+this.additionalValue);
+    // console.log('layerTwo name is:'+ this.myName, 'additionalValue: '+this.additionalValue);
   };
 
 
