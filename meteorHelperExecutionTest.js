@@ -16,17 +16,20 @@ if (Meteor.isClient) {
   // helper reactivity test
   Template.layerOne.myHelper = function () {
     Session.get('rerun');
-    console.log('layerOne helper rerun');
+    console.log('layerOne name is:'+ this.myName, 'additionalValue: '+this.additionalValue);
   };
   Template.layerTwo.myHelper = function () {
     Session.get('rerun');
-    console.log('layerTwo helper rerun');
+    console.log('layerTwo name is:'+ this.myName, 'additionalValue: '+this.additionalValue);
   };
 
 
   // show the items
-  Handlebars.registerHelper('getTemplate', function(templateName){
-    return Template[templateName].withData({my:'data'});
+  Handlebars.registerHelper('getTemplate', function(values){
+    return Template[values.hash.template].withData({
+      myName:values.hash.template,
+      additionalValue: values.hash.value
+    });
   });
 
 

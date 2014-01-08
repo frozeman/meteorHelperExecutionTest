@@ -11,7 +11,8 @@
   <button class="rerunHelper">Rerun helper, check console</button>
   <br><br><br>
 
-  {{> getTemplate "layerOne"}}
+  {{> getTemplate template="layerOne"}}
+
 </template>
 
 
@@ -19,7 +20,9 @@
     Layer one
     {{myHelper}}
 
-    {{> getTemplate "layerTwo"}}
+    {{> getTemplate template="layerTwo" value="myText1"}}
+    <br>
+    {{> getTemplate template="layerTwo" value="myText2"}}
 </template>
 
 <template name="layerTwo">
